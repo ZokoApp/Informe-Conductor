@@ -1,0 +1,218 @@
+<!DOCTYPE html>
+<html lang="es">
+<head>
+  <meta charset="UTF-8">
+  <title>Informe Diario de Servicio</title>
+  <meta name="viewport" content="width=device-width, initial-scale=1">
+
+  <link rel="manifest" href="manifest.json">
+  <link rel="stylesheet" href="styles.css">
+
+  <!-- jsPDF -->
+  <script src="https://cdnjs.cloudflare.com/ajax/libs/jspdf/2.5.1/jspdf.umd.min.js"></script>
+</head>
+<body>
+
+<header style="text-align:center; margin-bottom:6px">
+  <img src="logo.png" style="max-height:40px">
+  <h1 style="font-size:16px; margin:4px 0">Informe diario de servicio</h1>
+</header>
+
+<form id="informeForm">
+
+  <!-- DATOS GENERALES -->
+  <section class="grid-3">
+    <div>
+      <label>Fecha</label>
+      <input type="date" name="fecha">
+    </div>
+    <div>
+      <label>Servicio</label>
+      <input type="text" name="servicio">
+    </div>
+    <div>
+      <label>Turno</label>
+      <input type="text" name="turno">
+    </div>
+
+    <div>
+      <label>Interno</label>
+      <input type="text" name="interno">
+    </div>
+    <div>
+      <label>Ruta</label>
+      <input type="text" name="ruta">
+    </div>
+    <div>
+      <label>N° CCT</label>
+      <input type="text" name="cct">
+    </div>
+  </section>
+
+  <!-- CHOFER -->
+  <section class="grid-2">
+    <div>
+      <label>Chofer Titular</label>
+      <input type="text" name="chofer_titular">
+    </div>
+    <div>
+      <label>Reemplazo</label>
+
+      
+      <input type="text" name="chofer_reemplazo">
+    </div>
+  </section>
+  <section>
+  <strong style="font-size:11px">CARGADORES</strong>
+  <div class="grid-2" style="margin-top:4px">
+    <div>
+      <label>Titular</label>
+      <input type="text" name="cargador_titular">
+    </div>
+    <div>
+      <label>Reemplazo</label>
+      <input type="text" name="cargador_reemplazo">
+    </div>
+  </div>
+</section>
+<section>
+  <strong style="font-size:11px">CARGADORES</strong>
+  <div class="grid-2" style="margin-top:4px">
+    <div>
+      <label>Titular</label>
+      <input type="text" name="cargador_titular">
+    </div>
+    <div>
+      <label>Reemplazo</label>
+      <input type="text" name="cargador_reemplazo">
+    </div>
+  </div>
+</section>
+
+  <!-- HORARIOS Y KM -->
+  <section>
+    <table style="width:100%; border-collapse:collapse; font-size:11px">
+      <tr>
+        <th>Evento</th>
+        <th>Hora</th>
+        <th>Lectura KM</th>
+      </tr>
+
+      <tr>
+        <td>Salida base</td>
+        <td><input type="time" name="hora_salida_base"></td>
+        <td><input type="number" name="km_salida_base"></td>
+      </tr>
+
+      <tr>
+        <td>Llegada ruta</td>
+        <td><input type="time" name="hora_llegada_ruta"></td>
+        <td><input type="number" name="km_llegada_ruta"></td>
+      </tr>
+
+      <tr>
+        <td>Salida ruta</td>
+        <td><input type="time" name="hora_salida_ruta"></td>
+        <td><input type="number" name="km_salida_ruta"></td>
+      </tr>
+
+      <tr>
+        <td>Llegada relleno</td>
+        <td><input type="time" name="hora_llegada_relleno"></td>
+        <td><input type="number" name="km_llegada_relleno"></td>
+      </tr>
+
+      <tr>
+        <td>Salida relleno</td>
+        <td><input type="time" name="hora_salida_relleno"></td>
+        <td><input type="number" name="km_salida_relleno"></td>
+      </tr>
+
+      <tr>
+        <td>Llegada base</td>
+        <td><input type="time" name="hora_llegada_base"></td>
+        <td><input type="number" name="km_llegada_base"></td>
+      </tr>
+    </table>
+  </section>
+
+  <!-- REVISIONES + OBSERVACIONES -->
+<section class="grid-2">
+  <div>
+    <label><strong>Revisión salida</strong></label>
+    <label><input type="checkbox" name="rev_salida_ok"> Sin novedades</label>
+    <label><input type="checkbox" name="rev_salida_obs"> Con novedades</label>
+  </div>
+
+  <div>
+    <label><strong>Revisión llegada</strong></label>
+    <label><input type="checkbox" name="rev_llegada_ok"> Sin novedades</label>
+    <label><input type="checkbox" name="rev_llegada_obs"> Con novedades</label>
+  </div>
+</section>
+
+<!-- CHECKLIST -->
+<section class="grid-3 checklist">
+  <div>
+    <strong>Funcionamiento luces</strong>
+    <label><input type="checkbox" name="luces_posicion"> Posición</label>
+    <label><input type="checkbox" name="luces_bajas"> Bajas</label>
+    <label><input type="checkbox" name="luces_altas"> Altas</label>
+    <label><input type="checkbox" name="luces_stop"> Stop</label>
+    <label><input type="checkbox" name="luces_giro"> Giro</label>
+    <label><input type="checkbox" name="luces_retroceso"> Retroceso</label>
+  </div>
+
+  <div>
+    <strong>Estado chasis en general</strong>
+    <label><input type="checkbox" name="espejos"> Espejos</label>
+    <label><input type="checkbox" name="vidrios"> Vidrios</label>
+    <label><input type="checkbox" name="manija"> Manija puerta</label>
+    <label><input type="checkbox" name="estribos"> Estribos</label>
+    <label><input type="checkbox" name="paragolpes"> Paragolpes</label>
+    <label><input type="checkbox" name="guardabarros"> Guardabarros</label>
+  </div>
+
+  <div>
+    <strong>Estado interior cabina</strong>
+    <label><input type="checkbox" name="asientos"> Asientos</label>
+    <label><input type="checkbox" name="cinturon"> Cinturón</label>
+    <label><input type="checkbox" name="manija_int"> Manija interior</label>
+    <label><input type="checkbox" name="limpieza"> Limpieza</label>
+    <label><input type="checkbox" name="luces_tablero"> Luces tablero</label>
+  </div>
+</section>
+
+<!-- OBSERVACIONES -->
+<section>
+  <label><strong>Observaciones</strong></label>
+  <textarea name="observaciones" rows="3"></textarea>
+</section>
+
+<!-- FIRMA -->
+<section>
+  <label><strong>Firma del conductor</strong></label>
+  <canvas id="firma"></canvas>
+  <button type="button" onclick="limpiarFirma()">Limpiar firma</button>
+</section>
+
+  <button type="button" onclick="generarPDF()">Descargar PDF</button>
+
+  <button onclick="compartirWhatsApp()" style="width:100%;margin-top:10px">
+  📤 Compartir por WhatsApp
+</button>
+
+</form>
+
+<!-- Scripts -->
+<script src="app.js"></script>
+<script src="pdf.js"></script>
+
+<script>
+  if ("serviceWorker" in navigator) {
+    navigator.serviceWorker.register("sw.js");
+  }
+</script>
+
+</body>
+</html>
