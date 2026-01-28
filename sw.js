@@ -1,7 +1,7 @@
 const CACHE_NAME = "informe-conductor-v1";
 
 const FILES = [
-  "./",
+  "/",
   "./index.html",
   "./styles.css",
   "./app.js",
@@ -22,4 +22,5 @@ self.addEventListener("fetch", event => {
   event.respondWith(
     caches.match(event.request).then(res => res || fetch(event.request))
   );
+
 });
