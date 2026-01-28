@@ -1,4 +1,4 @@
-const CACHE_NAME = "informe-conductor-v1";
+const CACHE_NAME = "informe-conductor-v2";
 
 const FILES = [
   "/",
@@ -24,3 +24,4 @@ self.addEventListener("fetch", event => {
   );
 
 });
+
