@@ -71,4 +71,44 @@ form.addEventListener("input", () => {
   const data = {};
   new FormData(form).forEach((v, k) => data[k] = v);
   localStorage.setItem("informe", JSON.stringify(data));
+
 });
+
+let firmaCanvas = document.getElementById("firmaModalCanvas");
+let firmaCtx = firmaCanvas.getContext("2d");
+let dibujando = false;
+
+function abrirFirmaModal() {
+  document.getElementById("firmaModal").style.display = "flex";
+
+  setTimeout(() => {
+    firmaCanvas.width = firmaCanvas.offsetWidth;
+    firmaCanvas.height = firmaCanvas.offsetHeight;
+  }, 100);
+}
+
+// Dibujo
+firmaCanvas.addEventListener("pointerdown", e => {
+  dibujando = true;
+  firmaCtx.beginPath();
+  firmaCtx.moveTo(e.offsetX, e.offsetY);
+});
+
+firmaCanvas.addEventListener("pointermove", e => {
+  if (!dibujando) return;
+  firmaCtx.lineTo(e.offsetX, e.offsetY);
+  firmaCtx.stroke();
+});
+
+firmaCanvas.addEventListener("pointerup", () => dibujando = false);
+firmaCanvas.addEventListener("pointerleave", () => dibujando = false);
+
+function limpiarFirmaModal() {
+  firmaCtx.clearRect(0, 0, firmaCanvas.width, firmaCanvas.height);
+}
+
+function confirmarFirma() {
+  const img = firmaCanvas.toDataURL("image/png");
+  document.getElementById("firmaData").value = img;
+  document.getElementById("firmaModal").style.display = "none";
+}
