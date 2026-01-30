@@ -191,9 +191,11 @@
 
 <!-- FIRMA -->
 <section>
-  <label><strong>Firma del conductor</strong></label>
-  <canvas id="firma"></canvas>
-  <button type="button" onclick="limpiarFirma()">Limpiar firma</button>
+  <input type="hidden" id="firmaData">
+
+<button type="button" onclick="abrirFirmaModal()" style="width:100%">
+✍️ Firmar
+</button>
 </section>
 
   <button type="button" onclick="generarPDF()">Descargar PDF</button>
@@ -214,5 +216,20 @@
   }
 </script>
 
+  <!-- MODAL FIRMA -->
+<div id="firmaModal" class="modal-firma">
+  <div class="firma-box">
+    <h3>Firma del conductor</h3>
+
+    <canvas id="firmaModalCanvas"></canvas>
+
+    <div class="firma-botones">
+      <button onclick="limpiarFirmaModal()">Limpiar</button>
+      <button onclick="confirmarFirma()">Confirmar</button>
+    </div>
+  </div>
+</div>
+
 </body>
+
 </html>
