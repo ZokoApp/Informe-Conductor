@@ -176,7 +176,10 @@ async function generarPDF() {
   pdf.setFont("Helvetica", "normal");
 
   pdf.rect(10, y + 3, 90, 28);
-  const firmaImg = document.getElementById("firma").toDataURL("image/png");
+  const firmaImg = document.getElementById("firmaData").value;
+if (firmaImg) {
+  pdf.addImage(firmaImg, "PNG", 12, y + 5, 86, 24);
+}
   pdf.addImage(firmaImg, "PNG", 12, y + 5, 86, 24);
 
   // PIE
@@ -212,4 +215,5 @@ async function compartirWhatsApp() {
     window.open("https://wa.me/");
     window.open(url);
   }
+
 }
