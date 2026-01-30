@@ -33,7 +33,7 @@ form.addEventListener("input", () => {
 });
 
 // ================================
-// ✍️ FIRMA EN MODAL (ANTI SCROLL)
+// ✍️ FIRMA EN MODAL
 // ================================
 const firmaCanvas = document.getElementById("firmaModalCanvas");
 const firmaCtx = firmaCanvas.getContext("2d");
@@ -51,7 +51,6 @@ function abrirFirmaModal() {
   }, 100);
 }
 
-// Dibujo con dedo o mouse
 firmaCanvas.addEventListener("pointerdown", e => {
   dibujandoFirma = true;
   firmaCtx.beginPath();
