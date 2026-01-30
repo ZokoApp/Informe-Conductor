@@ -1,5 +1,5 @@
 // ================================
-// 📋 FORM + AUTOGUARDADO
+// 💾 AUTOGUARDADO DEL FORMULARIO
 // ================================
 const form = document.getElementById("informeForm");
 
@@ -32,8 +32,9 @@ form.addEventListener("input", () => {
   localStorage.setItem("informe", JSON.stringify(data));
 });
 
+
 // ================================
-// ✍️ FIRMA EN MODAL
+// ✍️ FIRMA EN MODAL (ÚNICA ACTIVA)
 // ================================
 const firmaCanvas = document.getElementById("firmaModalCanvas");
 const firmaCtx = firmaCanvas.getContext("2d");
